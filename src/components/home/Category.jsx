@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../redux/categorySlice";
 import { Box, Text } from "@chakra-ui/react";
+import mixpanel from "mixpanel-browser";
 
 export default function Category({ setCategory }) {
   const dispatch = useDispatch();
@@ -29,7 +30,10 @@ export default function Category({ setCategory }) {
               cursor: "pointer",
               bg: "#efebe8",
             }}
-            onClick={() => setCategory(category)}
+            onClick={() => {
+              setCategory(category);
+              mixpanel.track("women_clothing_category_selected");
+            }}
           >
             {category}
           </Box>
