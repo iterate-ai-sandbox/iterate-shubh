@@ -114,7 +114,14 @@ export default function Header() {
                           </Link>
                         </li>
                         <li>
-                          <Link to={ROUTES.STORES}>Stores</Link>
+                          <Link
+                            to={ROUTES.STORES}
+                            onClick={() => {
+                              mixpanel.track("cta");
+                            }}
+                          >
+                            Stores
+                          </Link>
                         </li>
                         <li>
                           <Link to={ROUTES.CONTACT}>Contacts</Link>
